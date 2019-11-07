@@ -1,0 +1,39 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	包含Spring boot对logback日志的默认配置
+	<include resource="org/springframework/boot/logging/logback//org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}" />
+	<include resource="org/springframework/boot/logging/logback//org/springframework/boot/logging/logback/console-appender.xml" />
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            控制台也要使用utf-8，不要使用gbk
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+	
+	重写了Spring boot框架 org/springframework/boot/logging/logback/file-appender.xml 配置
+	<appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern></pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<file>${LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i</fileNamePattern>
+			保留历史日志一个月时间
+			<maxHistory>30</maxHistory>
+			Springboot默认情况下，日志问价10M时，会切分日志文件，这样设置日志文件会在100M时切分日志
+			<timeBaseFileNamingAndTriggeringPolicy class="ch.qos.logback.core,rolling.SizeAndTimeBaseFNATP">
+				<maxFileSize>100</maxFileSize>
+			</timeBaseFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	
+	<root lever="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="TIME_FILE"/>
+	</root>
+</configuration> -->

@@ -1,0 +1,27 @@
+server:
+  port: 7878
+spring:
+  thymeleaf:
+    mode: HTML
+  ##数据库配置  
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF8&serverTimezone=UTC
+    username: root
+    password: 123456
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+##mybatis配置
+#mybatis:
+  #check-config-location: true
+  #classpath:/mybatis-config.xml
+  #config-location: classpath:/mybatis-config.xml
+  
+logging:
+  level:
+    root: info
+    com.blog: debug
+  file: log/blog.log

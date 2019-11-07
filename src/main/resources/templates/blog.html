@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragment :: head(~{::title})">
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" href="../css/me.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+</head>
+<body>
+    <!-- 导航-->
+    <!-- th:replace="_fragment :: menu(1)"  -->
+    <nav class="ui inverted attached segment m-padded-td-mini">
+	    <div class="ui container">
+	        <div class="ui inverted secondary stackable menu">
+	            <h2 class="ui teal header item">Blog</h2>
+	            <a href="index.html" class="m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
+	            <a href="types.html" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+	            <a href="tags.html" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+	            <a href="archives.html" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
+	            <a href="about.html" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
+	            <div class="right m-item  item  m-mobile-hide">
+	                <div class="ui icon inverted transparent input">
+	                    <input type="text" placeholder="Search....">
+	                    <i class="search link icon"></i>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <a href="#" class="ui menu toggle black icon button m-top-right m-mobile-show">
+	        <i class="sidebar icon"></i>
+	    </a>
+	</nav>
+
+    <!-- 中间内容-->
+    <div class="m-container-small  m-padded-tb-big">
+        <div class="ui container">
+            <div class="ui segment">
+                <div class="ui top attached segment">
+                    <div class="ui horizontal link list">
+                        <div class="item">
+                            <img src="https://unsplash.it/100/100?image=1005" class="ui avatar image"></img>
+                            <div class="content"><a href="#" class="header">Clown</a></div>
+                        </div>
+                        <div class="item">
+                            <i class="calendar icon"></i> 2019-09-28
+                        </div>
+                        <div class="item">
+                            <i class="eye icon"></i> 2342
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui attached segment">
+                    <!--图片区域-->
+                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui fluid rounded image">
+                </div>
+
+                <div class="ui attached padded segment">
+                    <!--内容-->
+                    <div class="ui right aligned basic segment">
+                        <div class="ui orange basic label">原创</div>
+                    </div>
+                    <h2 class="ui center aligned header">关于可以练习的清单</h2>
+                    <br>
+
+                    <div id="content" class="m-padded-lr m-padded-tb-large">
+                        <p>最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。</p>
+                        <h3>1</h3>
+                        <p>这是11111111的内容最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。最近几天在读《刻意练习</p>
+                        <h3>2</h3>
+                        <p>这是22222222的内容最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。最近几天在读《刻意练习</p>
+                        <p></p>
+                        <h3>3</h3>
+                        <p>这是3333333的内容最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。最近几天在读《刻意练习</p>
+                        <p></p>
+                        <h3>4</h3>
+                        <p>这是44444444的内容最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。最近几天在读《刻意练习</p>
+                        <p></p>
+                        <h3>5</h3>
+                        <p>这是55555555的内容最近几天在读《刻意练习》这本书，书中的一些概念与方法论让我受益匪浅。最近几天在读《刻意练习</p>
+                        <p></p>
+                    </div>
+
+                    <!--标签-->
+                    <div class="m-padded-lr">
+                        <div class="ui basic teal left pointing label">方法论</div>
+                    </div>
+
+                    <!--赞赏-->
+                    <div class="ui center aligned basic segment">
+                        <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                    </div>
+                    <div class="ui payQR flowing popup transition hidden">
+                        <div class="ui orange basic label">
+                            <div class="ui  images" style="font-size: 14px" >
+                                <div class="image">
+                                    <img src="../img/wechat.png" th:src="@{/img/wechat.png}" alt="" class="ui rounded bordered image" style="width: 120px">
+                                    <div class="center aligned">支付宝</div>
+                                </div>
+                                <div class="image">
+                                    <img src="../img/wechat.png" th:src="@{/img/wechat.png}" alt="" class="ui rounded bordered image" style="width: 120px">
+                                    <div>微信</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ui attached positive message">
+                    <!--博客信息-->
+                    <div class="ui middle aligned grid">
+                        <div class="eleven wide column">
+                            <ul class="list">
+                                <li>作者：Clown</li>
+                                <li>发表时间： 2019-09-29 09:09</li>
+                                <li>版权神明：自由转载-非商用-非衍生-保持署名</li>
+                                <li>公众号转载：请在文末二维码添加</li>
+                            </ul>
+                        </div>
+                        <div class="five wide column">
+                            <img src="../img/wechat.png" alt="" class="ui right floated rounded bordered image" style="width: 120px" >
+                        </div>
+                    </div>
+                </div>
+                <div class="ui bottom attached segment"><!--https://unsplash.it/100/100?image=1005-->
+                   <!-- 留言区域-->
+                    <div class="ui teal segment">
+                        <div class="ui comments">
+                            <h3 class="ui dividing header">Comments</h3>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1005">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Matt</a>
+                                    <div class="metadata">
+                                        <span class="date">Today at 5:42PM</span>
+                                    </div>
+                                    <div class="text">
+                                        How artistic!
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">回复blog.html</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1003">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Elliot Fu</a>
+                                    <div class="metadata">
+                                        <span class="date">Yesterday at 12:30AM</span>
+                                    </div>
+                                    <div class="text">
+                                        <p>This has been very useful for my research. Thanks as well!</p>
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">回复</a>
+                                    </div>
+                                </div>
+                                <div class="comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="https://unsplash.it/100/100?image=1005">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">Jenny Hess</a>
+                                            <div class="metadata">
+                                                <span class="date">Just now</span>
+                                            </div>
+                                            <div class="text">
+                                                Elliot you are always so right :)
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="https://unsplash.it/100/100?image=1005">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Joe Henderson</a>
+                                    <div class="metadata">
+                                        <span class="date">5 days ago</span>
+                                    </div>
+                                    <div class="text">
+                                        Dude, this is awesome. Thanks so much
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">回复</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui form">
+                        <div class="field">
+                            <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                        </div>
+                        <div class="fields">
+                            <div class="field m-mobile-wide m-margin-bottom-small">
+                                <div class="ui left icon input">
+                                    <i class="usr icon"></i>
+                                    <input type="text" name="nickname" placeholder="姓名">
+                                </div>
+                            </div>
+                            <div class="field m-mobile-wide m-margin-bottom-small">
+                                <div class="ui left icon input">
+                                    <i class="mail icon"></i>
+                                    <input type="text" name="email" placeholder="邮箱">
+                                </div>
+                            </div>
+                            <div class="field m-mobile-wide m-margin-bottom-small">
+                                <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部footer-->
+    <footer th:replace="_fragment :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned  container">
+            <div class="ui grid stackable">
+                <div class="three wide column">
+                    <img src="../img/wechat.png" th:src="@{/img/wechat.png}" class="ui centered rounded image" style="width: 110px" alt="">
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">用户故事 (User Story)</a>
+                        <a href="#" class="item">用户故事 (User Story)</a>
+                        <a href="#" class="item">用户故事 (User Story)</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Email: xxxx@163.com</a>
+                        <a href="#" class="item">QQ: 4564165484</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">Blog</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客这是我的个人博客这是我的个人博客这是我的个人博客这是我的个人博客</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright @2045454545 Clown Designed By jsjd</p>
+        </div>
+    </footer>
+	
+	<!-- /*/<th:block th:replace="_fraament :: script"> /*/ -->
+		 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+   		 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+	<!-- /*/</th:block> /*/ -->
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+        $('#payButton').popup({
+            popup : $('.payQR.popup'),
+            on : 'click',
+            position : 'bottom center'
+        });
+    </script>
+</body>
+</html>
