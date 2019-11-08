@@ -23,7 +23,7 @@ public class IndexController {
 	public String blog() {
 		return "blog";
 	}
-	
+	 
 	@RequestMapping("/login")
 	public String login() {
 		return "admin/login";
