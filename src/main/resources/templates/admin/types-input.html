@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="admin/_fragment :: head(~{::title})">
-    <title>·ÖÀàÐÂÔö</title>
+	<meta charset="UTF-8">
+    <title>åˆ†ç±»æ–°å¢ž</title>
     <link rel="stylesheet" href="../../css/me.css">
     <link rel="stylesheet" href="../../lib/editormd/css/editormd.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
 </head>
 <body>
-    <!-- µ¼º½-->
+    <!-- å¯¼èˆª-->
     <nav th:replace="admin/_fragment :: menu(2)" class="ui inverted attached segment m-padded-td-mini" m-shadow-small>
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
-                <h2 class="ui teal header item">¹ÜÀíºóÌ¨</h2>
-                <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>²©¿Í</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>·ÖÀà</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>±êÇ©</a>
+                <h2 class="ui teal header item">ç®¡ç†åŽå°</h2>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>åšå®¢</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>åˆ†ç±»</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>æ ‡ç­¾</a>
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
                         Clown
                         <i class="ui dropdown icon"></i>
                         <div class="menu">
-                            <a href="#" class="item">×¢Ïú</a>
+                            <a href="#" class="item">æ³¨é”€</a>
                         </div>
                     </div>
 
@@ -35,27 +36,35 @@
     <div class="ui attached pointing menu">
          <div class="ui container">
              <div class="right menu">
-                 <a href="#" class="active teal item">·¢²¼</a>
-                 <a href="#" class="item">ÁÐ±í</a>
+                 <a href="#" th:href="@{/admin/types/input}" class="active teal item">å‘å¸ƒ</a>
+                 <a href="#" th:href="@{/admin/types}" class="item">åˆ—è¡¨</a>
              </div>
          </div>
     </div>
 
-    <!-- ÖÐ¼äÄÚÈÝ-->
+    <!-- ä¸­é—´å†…å®¹-->
     <div class="m-container-small  m-padded-tb-big">
        <div class="ui container">
-           <form action="#" method="post" class="ui form">       
-               <div class="field">
+           <form action="#" method="post" th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}" th:object="${type}" class="ui form">       
+              <input type="hidden" name="id" th:value="*{id}" />
+               <div class="required field">
                    <div class="ui left labeled input">
-                       <label class="ui teal basic label">·ÖÀà</label>
-                       <input type="text" name="name" placeholder="·ÖÀàÃû³Æ">
+                       <label class="ui teal basic label">åˆ†ç±»</label>
+                       <input type="text" name="name" placeholder="åˆ†ç±»åç§°" th:value="*{name}">
                    </div>
                </div>
 
                <div class="ui error message"></div>
+               <!--/*/  
+               		<div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+               			<i class="close icon"></i>
+               			<div class="header">éªŒè¯å¤±è´¥</div>
+               			<p th:errors="*{name}">æäº¤ä¿¡æ¯ä¸ç¬¦åˆè§„åˆ™</p>
+               		</div>
+               /*/-->
                <div class="ui right aligned container">
-                   <button type="button" class="ui button" onclick="window.history.go(-1)">·µ»Ø</button>
-                   <button class="ui teal button">Ìá½»</button>
+                   <button type="button" class="ui button" onclick="window.history.go(-1)">è¿”å›ž</button>
+                   <button class="ui teal button">æäº¤</button>
                </div>
            </form>
 
@@ -63,7 +72,7 @@
        </div>
     </div>
 
-    <!-- µ×²¿footer-->
+    <!-- åº•éƒ¨footer-->
     <footer th:replace="admin/_fragment :: footer" class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned  container">
             <div class="ui grid stackable">
@@ -71,15 +80,15 @@
                     <img src="../../img/wechat.png" class="ui centered rounded image" style="width: 110px" alt="">
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">×îÐÂ²©¿Í</h4>
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">æœ€æ–°åšå®¢</h4>
                     <div class="ui inverted link list">
-                        <a href="#" class="item">ÓÃ»§¹ÊÊÂ (User Story)</a>
-                        <a href="#" class="item">ÓÃ»§¹ÊÊÂ (User Story)</a>
-                        <a href="#" class="item">ÓÃ»§¹ÊÊÂ (User Story)</a>
+                        <a href="#" class="item">ç”¨æˆ·æ•…äº‹ (User Story)</a>
+                        <a href="#" class="item">ç”¨æˆ·æ•…äº‹ (User Story)</a>
+                        <a href="#" class="item">ç”¨æˆ·æ•…äº‹ (User Story)</a>
                     </div>
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">ÁªÏµÎÒ</h4>
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">è”ç³»æˆ‘</h4>
                     <div class="ui inverted link list">
                         <a href="#" class="item">Email: xxxx@163.com</a>
                         <a href="#" class="item">QQ: 4564165484</a>
@@ -87,7 +96,7 @@
                 </div>
                 <div class="seven wide column">
                     <h4 class="ui inverted header m-text-thin m-text-spaced">Blog</h4>
-                    <p class="m-text-thin m-text-spaced m-opacity-mini">ÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿Í</p>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢</p>
                 </div>
             </div>
             <div class="ui inverted section divider"></div>
@@ -101,7 +110,7 @@
 	<!-- /*/</th:block> /*/ -->
     <script src="../../lib/editormd/editormd.min.js"></script>
     <script>
-        //³õÊ¼»¯Markdown±à¼­Æ÷
+        //åˆå§‹åŒ–Markdownç¼–è¾‘å™¨
         let testEditor;
         $(function() {
             testEditor = editormd("md-content", {
@@ -120,10 +129,10 @@
         $('.ui.form').form({
            fields : {
                title : {
-                   identifier: 'title',
+                   identifier: 'name',
                    rules: [{
                        type: 'empty',
-                       prompt: '±êÌâ£ºÇëÊäÈë²©¿Í±êÌâ'
+                       prompt: 'è¯·è¾“å…¥åˆ†ç±»åç§°'
                    }]
                }
            }

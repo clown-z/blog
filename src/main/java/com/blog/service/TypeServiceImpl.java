@@ -29,6 +29,11 @@ public class TypeServiceImpl implements TypeService {
 	public Type getType(Long id) {
 		return typeDao.getOne(id);
 	}
+	
+	@Override
+	public Type getTypeByName(String name) {
+		return typeDao.findByName(name);
+	}
 
 	@Transactional
 	@Override

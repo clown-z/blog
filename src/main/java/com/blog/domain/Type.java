@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "t_type")
@@ -16,6 +18,8 @@ public class Type {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@NotBlank(message = "分类名称不能为空")
 	private String name;
 	
 	//一对多
