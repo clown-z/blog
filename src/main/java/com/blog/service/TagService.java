@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,6 +15,8 @@ public interface TagService {
 	Tag getTagByName(String name);
 	
 	Page<Tag> listTag(Pageable pageable);
+	
+	List<Tag> listTag();
 	
 	Tag updateTag(Long id, Tag Tag);
 	

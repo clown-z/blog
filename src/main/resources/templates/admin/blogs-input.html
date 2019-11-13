@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(title)">
-    <title>²©¿Í·¢²¼</title>
-    <link rel="stylesheet" href="../../css/me.css">
-    <link rel="stylesheet" href="../../lib/editormd/css/editormd.css">
+<head th:replace="admin/_fragment :: head(~{::title})">
+	<meta charset="UTF-8">
+    <title>åšå®¢å‘å¸ƒ</title>
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/lib/codemirror/codemirror.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/lib/codemirror/addon/dialog/dialog.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
 </head>
 <body>
-    <!-- µ¼º½-->
-    <nav class="ui inverted attached segment m-padded-td-mini" m-shadow-small>
+    <!-- å¯¼èˆª-->
+    <nav th:replace="admin/_fragment :: menu(1)" class="ui inverted attached segment m-padded-td-mini" m-shadow-small>
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
-                <h2 class="ui teal header item">¹ÜÀíºóÌ¨</h2>
-                <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>²©¿Í</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>·ÖÀà</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>±êÇ©</a>
+                <h2 class="ui teal header item">ç®¡ç†åå°</h2>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>åšå®¢</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>åˆ†ç±»</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>æ ‡ç­¾</a>
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
                         Clown
                         <i class="ui dropdown icon"></i>
                         <div class="menu">
-                            <a href="#" class="item">×¢Ïú</a>
+                            <a href="#" class="item">æ³¨é”€</a>
                         </div>
                     </div>
 
@@ -35,69 +38,67 @@
     <div class="ui attached pointing menu">
          <div class="ui container">
              <div class="right menu">
-                 <a href="#" class="active teal item">·¢²¼</a>
-                 <a href="#" class="item">ÁĞ±í</a>
+                 <a href="#" class="active teal item">å‘å¸ƒ</a>
+                 <a href="#" class="item">åˆ—è¡¨</a>
              </div>
          </div>
     </div>
 
-    <!-- ÖĞ¼äÄÚÈİ-->
+    <!-- ä¸­é—´å†…å®¹-->
     <div class="m-container-small  m-padded-tb-big">
        <div class="ui container">
-           <form action="#" method="post" class="ui form">
+           <form id="blog-form" action="#" th:action="@{/admin/bolgs}" method="post" class="ui form">
+           		<input type="hidden" name="published">
                <div class="required field">
                    <div class="ui left labeled input">
                        <div class="ui selection compact teal basic dropdown label">
-                           <input type="hidden" value="Ô­´´">
+                           <input type="hidden" value="åŸåˆ›">
                            <i class="dropdown icon"></i>
-                           <div class="text">Ô­´´</div>
+                           <div class="text">åŸåˆ›</div>
                            <div class="menu">
-                               <div class="item" data-value="Ô­´´">Ô­´´</div>
-                               <div class="item" data-value="×ªÔØ">×ªÔØ</div>
-                               <div class="item" data-value="·­Òë">·­Òë</div>
+                               <div class="item" data-value="åŸåˆ›">åŸåˆ›</div>
+                               <div class="item" data-value="è½¬è½½">è½¬è½½</div>
+                               <div class="item" data-value="ç¿»è¯‘">ç¿»è¯‘</div>
                            </div>
                        </div>
-                       <input type="text" name="title" placeholder="±êÌâ">
+                       <input type="text" name="title" placeholder="æ ‡é¢˜">
                    </div>
                </div>
 
-               <div class="field">
+               <div class="required field">
                    <div id="md-content">
-                       <textarea name="content" placeholder="²©¿ÍÄÚÈİ">
-                           #### Disabled options
-                                - TeX (Based on KaTeX);
-                                - Emoji;
-                                - Task lists;
-                                - HTML tags decode;
-                                - Flowchart and Sequence Diagram;
-                       </textarea>
+                       <textarea name="content" placeholder="åšå®¢å†…å®¹"></textarea>
                    </div>
                </div>
                <div class="two fields">
-                   <div class="field">
+                   <div class="required field">
                        <div class="ui left labeled action input">
-                           <label  class="ui compact teal basic label">·ÖÀà</label>
+                           <label  class="ui compact teal basic label">åˆ†ç±»</label>
                            <div class="ui fluid selection dropdown">
-                               <input type="hidden" name="type">
+                               <input type="hidden" name="type.id">
                                <i class="dropdown icon"></i>
-                               <div class="default text">·ÖÀà</div>
+                               <div class="default text">åˆ†ç±»</div>
                                <div class="menu">
-                                   <div class="item" data-value="1">´íÎóÈÕÖ¾</div>
-                                   <div class="item" data-value="2">¿ª·¢ÕßÊÖ²á</div>
+                                   <div th:each="type: ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}" >é”™è¯¯æ—¥å¿—</div>
+                                   <!-- /* -->
+                                   <div class="item" data-value="2">å¼€å‘è€…æ‰‹å†Œ</div>
+                                   <!-- */ -->
                                </div>
                            </div>
                        </div>
                    </div>
                    <div class="field">
                        <div class="ui left labeled action input">
-                           <label  class="ui compact teal basic label">±êÇ©</label>
+                           <label  class="ui compact teal basic label">æ ‡ç­¾</label>
                            <div class="ui fluid selection multiple search dropdown">
-                               <input type="hidden" name="tag">
+                               <input type="hidden" name="tagIds">
                                <i class="dropdown icon"></i>
-                               <div class="default text">±êÇ©</div>
+                               <div class="default text">æ ‡ç­¾</div>
                                <div class="menu">
-                                   <div class="item" data-value="1">Java</div>
+                                   <div th:each="tag: ${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="${tag.name}">Java</div>
+                                   <!-- /* -->
                                    <div class="item" data-value="2">JavaScript</div>
+                               		<!-- */ -->
                                </div>
                            </div>
                        </div>
@@ -108,41 +109,41 @@
                    <div class="field">
                        <div class="ui checkbox">
                            <input type="checkbox" id="recommend" name="recommend" checked="checked" class="hidden">
-                           <label for="recommend">ÍÆ¼ö</label>
+                           <label for="recommend">æ¨è</label>
                        </div>
                    </div>
                    <div class="field">
                        <div class="ui checkbox">
-                           <input type="checkbox" id="shareInfo" name="shareInfo" class="hidden">
-                           <label for="shareInfo">×ªÔØÉùÃ÷</label>
+                           <input type="checkbox" id="shareStatement" name="shareStatement" class="hidden">
+                           <label for="shareStatement">è½¬è½½å£°æ˜</label>
                        </div>
                    </div>
                    <div class="field">
                        <div class="ui checkbox">
                            <input type="checkbox" id="appreciation" name="appreciation" class="hidden">
-                           <label for="appreciation">ÔŞÉÍ</label>
+                           <label for="appreciation">èµèµ</label>
                        </div>
                    </div>
                    <div class="field">
                        <div class="ui checkbox">
-                           <input type="checkbox" id="comment" name="comment" class="hidden">
-                           <label for="comment">ÆÀÂÛ</label>
+                           <input type="checkbox" id="commentabled" name="commentabled" class="hidden">
+                           <label for="commentabled">è¯„è®º</label>
                        </div>
                    </div>
                </div>
 
-               <div class="field">
+               <div class="required field">
                    <div class="ui left labeled input">
-                       <label class="ui teal basic label">Ê×Í¼</label>
-                       <input type="text" name="indexPicture" placeholder="Ê×Í¼ÒıÓÃµØÖ·">
+                       <label class="ui teal basic label">é¦–å›¾</label>
+                       <input type="text" name="firstPicture" placeholder="é¦–å›¾å¼•ç”¨åœ°å€">
                    </div>
                </div>
 
                <div class="ui error message"></div>
                <div class="ui right aligned container">
-                   <button type="button" class="ui button" onclick="window.history.go(-1)">·µ»Ø</button>
-                   <button class="ui secondary button">±£´æ</button>
-                   <button class="ui teal button">·¢²¼</button>
+                   <button type="button" class="ui button" onclick="window.history.go(-1)">è¿”å›</button>
+                   <button type="button" id="save-btn" class="ui secondary button">ä¿å­˜</button>
+                   <button type="button" id="publish-btn" class="ui teal button">å‘å¸ƒ</button>
                </div>
            </form>
 
@@ -150,23 +151,23 @@
        </div>
     </div>
 
-    <!-- µ×²¿footer-->
+    <!-- åº•éƒ¨footer-->
     <footer th:replace="admin/_fragment :: footer" class="ui inverted vertical segment m-padded-tb-massive">
         <div class="ui center aligned  container">
             <div class="ui grid stackable">
                 <div class="three wide column">
-                    <img src="../../img/wechat.png" class="ui centered rounded image" style="width: 110px" alt="">
+                    <img src="../../static/img/wechat.png" class="ui centered rounded image" style="width: 110px" alt="">
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">×îĞÂ²©¿Í</h4>
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">æœ€æ–°åšå®¢</h4>
                     <div class="ui inverted link list">
-                        <a href="#" class="item">ÓÃ»§¹ÊÊÂ (User Story)</a>
-                        <a href="#" class="item">ÓÃ»§¹ÊÊÂ (User Story)</a>
-                        <a href="#" class="item">ÓÃ»§¹ÊÊÂ (User Story)</a>
+                        <a href="#" class="item">ç”¨æˆ·æ•…äº‹ (User Story)</a>
+                        <a href="#" class="item">ç”¨æˆ·æ•…äº‹ (User Story)</a>
+                        <a href="#" class="item">ç”¨æˆ·æ•…äº‹ (User Story)</a>
                     </div>
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">ÁªÏµÎÒ</h4>
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">è”ç³»æˆ‘</h4>
                     <div class="ui inverted link list">
                         <a href="#" class="item">Email: xxxx@163.com</a>
                         <a href="#" class="item">QQ: 4564165484</a>
@@ -174,7 +175,7 @@
                 </div>
                 <div class="seven wide column">
                     <h4 class="ui inverted header m-text-thin m-text-spaced">Blog</h4>
-                    <p class="m-text-thin m-text-spaced m-opacity-mini">ÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿ÍÕâÊÇÎÒµÄ¸öÈË²©¿Í</p>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢è¿™æ˜¯æˆ‘çš„ä¸ªäººåšå®¢</p>
                 </div>
             </div>
             <div class="ui inverted section divider"></div>
@@ -182,20 +183,22 @@
         </div>
     </footer>
 
-    <!-- /*/<th:block th:replace="_fraament :: script"> /*/ -->
+    <!-- /*/<th:block th:replace="admin/_fragment :: script"> /*/ -->
 		 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
    		 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-	<!-- /*/</th:block> /*/ -->
-    <script src="../../lib/editormd/editormd.min.js"></script>
+		 
+	<!-- /*/</th:block> /*/ --> 
+	<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
     <script>
-        //³õÊ¼»¯Markdown±à¼­Æ÷
-        let testEditor;
+        //åˆå§‹åŒ–Markdownç¼–è¾‘å™¨
+        var testEditor;
         $(function() {
             testEditor = editormd("md-content", {
-                width   : "100%",
-                height  : 640,
+                width : "100%",
+                height : 640,
                 syncScrolling : "single",
-                path    : "../static/lib/editormd/lib/"
+                //path    : "../static/lib/editormd/lib/"
+                path: "/lib/editormd/lib/"
             });
         });
         $('.menu.toggle').click(function () {
@@ -204,13 +207,42 @@
         $('.ui.dropdown').dropdown({
             on: 'hover'
         });
+        $('#save-btn').click(function(){
+        	$('[name="published"]').val(false);
+        	$('#blog-form').submit();
+        });
+        $('#publish-btn').click(function(){
+        	$('[name="published"]').val(true);
+        	$('#blog-form').submit();
+        });
         $('.ui.form').form({
            fields : {
                title : {
                    identifier: 'title',
                    rules: [{
                        type: 'empty',
-                       prompt: '±êÌâ£ºÇëÊäÈë²©¿Í±êÌâ'
+                       prompt: 'æ ‡é¢˜ï¼šè¯·è¾“å…¥åšå®¢æ ‡é¢˜'
+                   }]
+               },
+               content : {
+                   identifier: 'content',
+                   rules: [{
+                       type: 'empty',
+                       prompt: 'æ ‡é¢˜ï¼šè¯·è¾“å…¥åšå®¢å†…å®¹'
+                   }]
+               },
+               typeId : {
+                   identifier: 'typeId',
+                   rules: [{
+                       type: 'empty',
+                       prompt: 'æ ‡é¢˜ï¼šè¯·è¾“å…¥åšå®¢åˆ†ç±»'
+                   }]
+               },
+               firstPicture : {
+                   identifier: 'firstPicture',
+                   rules: [{
+                       type: 'empty',
+                       prompt: 'æ ‡é¢˜ï¼šè¯·è¾“å…¥åšå®¢é¦–å›¾'
                    }]
                }
            }

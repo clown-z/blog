@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,6 +51,11 @@ public class TagServiceImpl implements TagService {
 	@Override
 	public void deleteTag(Long id) {
 		tagDao.deleteById(id);
+	}
+
+	@Override
+	public List<Tag> listTag() {
+		return tagDao.findAll();
 	}
 
 }
