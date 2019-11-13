@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.BeanUtils;
@@ -56,6 +58,11 @@ public class TypeServiceImpl implements TypeService {
 	@Override
 	public void deleteType(Long id) {		
 		typeDao.deleteById(id);
+	}
+
+	@Override
+	public List<Type> listType() {
+		return typeDao.findAll();
 	}
 
 }

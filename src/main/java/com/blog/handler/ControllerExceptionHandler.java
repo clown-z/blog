@@ -21,7 +21,7 @@ public class ControllerExceptionHandler {
 		
 		//判断是否有状态码
 		if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
-			throw e;
+			throw e;  
 		}
 		
 		ModelAndView mv = new ModelAndView();
