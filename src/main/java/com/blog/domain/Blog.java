@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "t_blog")
@@ -23,6 +27,8 @@ public class Blog {
 	@GeneratedValue
 	private Long id;
 	private String  title;
+	@Basic(fetch = FetchType.LAZY)
+	@Lob
 	private String content;
 	private String firstPicture;
 	private String flag;
@@ -53,9 +59,20 @@ public class Blog {
 	@OneToMany(mappedBy = "blog")
 	private List<Comment> comments = new ArrayList<Comment>();
 	
+	@Transient()
+	private String tagIds;
+	
 	public Blog() {
 	}
 	
+	public String getTagIds() {
+		return tagIds;
+	}
+
+	public void setTagIds(String tagIds) {
+		this.tagIds = tagIds;
+	}
+
 	public Blog(Long id, String title, String content, String firstPicture, String flag, Integer views,
 			boolean appreciation, boolean shareStatement, boolean commentabled, boolean published, boolean recommend,
 			Date createTime, Date updateTime) {

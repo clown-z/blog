@@ -1,5 +1,6 @@
 package com.blog.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -56,6 +57,24 @@ public class TagServiceImpl implements TagService {
 	@Override
 	public List<Tag> listTag() {
 		return tagDao.findAll();
+	}
+
+	@Override
+	public List<Tag> listTag(String ids) {//1,2,3
+		return tagDao.findAll();
+		//ById(convertToList(ids));
+	}
+	
+	private  List<Long> convertToList(String ids) {
+		List<Long> list = new ArrayList<Long>();
+		if ("".equals(ids) && ids != null) {
+			String[] idarry = ids.split(",");
+			for (int i = 0; i < idarry.length; i++) {
+				list.add(new Long(idarry[i]));
+				
+			}
+		}
+		return list;
 	}
 
 }
