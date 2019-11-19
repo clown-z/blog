@@ -95,7 +95,6 @@
 	                       <td th:text="${blog.recommend} ? '是':  '否' ">是</td>
 	                       <td th:text="${blog.recommend} ? '草稿':  '发布' ">草稿</td>
 	                       <td th:text="${blog.updateTime}">2019-10-08</td>
-	                       <!-- <td  th:text="${blog}"></td> -->
 	                       <td>
 	                           <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
 	                           <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
@@ -168,7 +167,7 @@
             on: 'hover'
         });
         
-      //消息提示病关闭初始化
+      //消息提示并关闭初始化
         $('.message .close')
         	.on('click', function(){
         		$(this)

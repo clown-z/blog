@@ -72,6 +72,28 @@ public class Blog {
 	public void setTagIds(String tagIds) {
 		this.tagIds = tagIds;
 	}
+	
+	public void init() {
+		this.tagIds = tagsToIds(this.getTags());
+	}
+	
+	private String tagsToIds(List<Tag> tags) {
+		if(!tags.isEmpty()) {
+			StringBuffer ids = new StringBuffer();
+			boolean flag = false;
+			for (Tag tag : tags) {
+				if (flag) {
+					ids.append(",");
+				}else {
+					flag = true;
+				}
+				ids.append(tag.getId());
+			}
+			return ids.toString();
+		}else {
+			return tagIds;
+		}
+	}
 
 	public Blog(Long id, String title, String content, String firstPicture, String flag, Integer views,
 			boolean appreciation, boolean shareStatement, boolean commentabled, boolean published, boolean recommend,

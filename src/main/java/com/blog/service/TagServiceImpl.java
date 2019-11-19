@@ -70,8 +70,7 @@ public class TagServiceImpl implements TagService {
 		if ("".equals(ids) && ids != null) {
 			String[] idarry = ids.split(",");
 			for (int i = 0; i < idarry.length; i++) {
-				list.add(new Long(idarry[i]));
-				
+				list.add(new Long(idarry[i]));	
 			}
 		}
 		return list;
